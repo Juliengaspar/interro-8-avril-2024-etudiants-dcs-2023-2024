@@ -96,6 +96,16 @@ class JiriController
         $jiri = $this->jiri->findOrFail($id);
 
         view('jiris.edit', compact('jiri'));
+
+        //resupere les infos du users
+        if (!isset($_POST['email']) || !ctype_digit($_POST['email']) ){
+            Response::abort(Response::BAD_REQUEST);
+
+        }
+        $email_user =$_POST['email'];
+        $jiri = $this->jiri->findOrFail($email_user);
+        view('jiri.edit', compact('jiri'));
+
     }
 
     public function update(): void
@@ -128,4 +138,5 @@ class JiriController
 
         Response::redirect('/jiris');
     }
+
 }

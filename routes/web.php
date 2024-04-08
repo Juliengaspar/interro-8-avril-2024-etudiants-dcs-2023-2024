@@ -18,4 +18,3 @@ $router->patch('/jiri', [JiriController::class, 'update'])->csrf();
 
 $router->delete('/jiri', [JiriController::class, 'destroy'])->csrf();
 
-
